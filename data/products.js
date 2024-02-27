@@ -656,5 +656,25 @@ const products = [
       "apparel",
       "mens"
     ]
+  },
+  {
+    id: "id1",
+    image: "images/products/backpack.jpg",
+    name: "Waterproof Backpack - Black",
+    rating: {
+      stars: 5.0,
+      count: 143
+    },
+    priceCents: 1430
+  },
+  {
+    id: "id2",
+    image: "images/products/umbrella.jpg",
+    name: "100% Cotton Umbrella, Green",
+    rating: {
+      stars: 4.0,
+      count: 69
+    },
+    priceCents: 8890
   }
 ];

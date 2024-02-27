@@ -39,7 +39,7 @@ products.forEach((product)=>{
 
   <div class="product-spacer"></div>
 
-  <div class="added-to-cart">
+  <div class="added-to-cart js-added-to-cart-${product.id}">
     <img src="images/icons/checkmark.png">
     Added
   </div>
@@ -62,15 +62,15 @@ document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
       }
     });
 
-    let quantitynumber=Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
+    let quantity=Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
 
     if (matchingitem){
-      matchingitem.quantity +=quantitynumber;
+      matchingitem.quantity +=quantity;
     }
     else{
       cart.push({
         productId ,//productId:productId,
-        quantity: quantitynumber
+        quantity
       });
     }
     
@@ -79,5 +79,11 @@ document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
       cartquantity+=item.quantity;
     });
     document.querySelector('.js-cart-quantity').innerHTML=cartquantity;
+
+
+    document.querySelectorAll(`.js-added-to-cart-${productId}`).forEach((div)=>{
+      div.classList.add('added-to-carts');
+      setTimeout(()=>{div.classList.remove('added-to-carts');},2000);
   });
+});
 });
