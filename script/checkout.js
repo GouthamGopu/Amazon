@@ -1,8 +1,10 @@
-import{cart, removeFromCart,caluclatecartQuantity} from '../data/cart.js';
+import{cart, removeFromCart,caluclatecartQuantity,updateDeliveryOption} from '../data/cart.js';
 import { products } from '../data/products.js';
 import { formatcurrency } from './utils/money.js';
 import dayjs from'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {deliveryOptions} from '../data/deliveryOption.js';
+
+function renderorderSummary(){
 
 let cartSummary='';
 
@@ -91,7 +93,9 @@ function deliveryOptionsHTML(matchingProduct,cartItem){
 
     const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
     html +=`
-    <div class="delivery-option">
+    <div class="delivery-option js-delivery-option"
+        data-product-id="${matchingProduct.id}"
+        data-delivery-option-id="${deliveryOption.id}">
       <input type="radio"
         ${isChecked? 'checked' : ''}
         class="delivery-option-input"
@@ -125,35 +129,13 @@ function checkoutUpdate(){
   document.querySelector('.js-cart-quantity-header').innerHTML=`${cartquantity} items`;
 }
 
-
-document.querySelectorAll('.js-update-link')
-  .forEach((link) => {
-    link.addEventListener('click', () => {
-      const productId = link.dataset.productId;
-      const container1 =document.querySelector(`.js-cart-item-container-${productId}`);
-      container1.classList.add('is-editing-quantity');
+document.querySelectorAll('.js-delivery-option')
+  .forEach((element)=>{
+    element.addEventListener('click',()=>{
+      const {productId,deliveryOptionId} = element.dataset;
+      updateDeliveryOption(productId,deliveryOptionId);
+      renderorderSummary();
     });
   });
-document.querySelectorAll('.js-save-link')
-  .forEach((link) => {
-    link.addEventListener('click', () => {
-      const productId = link.dataset.productId;
-  const quantityInput = document.querySelector(
-    `.js-cart-item-container-${productId}`
-  );
-  const newQuantity = Number(quantityInput.value);
-
-  if (newQuantity < 0 || newQuantity >= 1000) {
-    alert('Quantity must be at least 0 and less than 1000');
-    return;
-  }
-  updateQuantity(productId, newQuantity);
-
-  const container = document.querySelector(
-    `.js-cart-item-container-${productId}`
-  );
-  container.classList.remove('is-editing-quantity');
-
-  const quantityLabel = document.querySelector(
-    `.js-quantity-label-${productId}`
-  );})});
+}
+renderorderSummary();
