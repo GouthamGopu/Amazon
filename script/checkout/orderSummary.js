@@ -115,6 +115,7 @@ document.querySelectorAll('.js-delete-link').forEach((link)=>{
     removeFromCart(productId);
    document.querySelector(`.js-cart-item-container-${productId}`).remove();
    checkoutUpdate();
+   renderPaymentSummary();
   });
 });
 

@@ -209,12 +209,15 @@
   margin-top: 11px;
   margin-bottom: 15px;
 }
+
+/*i can't make update button interactive*/
 .quantity-input{
   width: 30px;
 }
 .quantity-input,.save-quantity-link,.nonedisplay{
   display: none;
 }
+/*
 .intialdisplay{
   display: initial;
 }
@@ -223,4 +226,4 @@
 }
 .is-editing-quantity .quantity-label,.is-editing-quantity .update-quantity-link{
   display: none;
-}
+}*/
