@@ -70,3 +70,11 @@ export function updateDeliveryOption(productId,deliveryOptionId){
   matchingitem.deliveryOptionId = deliveryOptionId;
   savetoStorage();
 }
+export function savetoCart(productId){
+  cart.forEach((cartItem)=>{
+    if(productId === cartItem.productId){
+      cartItem.quantity = Number(document.querySelector(`.js-quantity-input-${productId}`).value);
+    }
+  });
+  savetoStorage();
+}

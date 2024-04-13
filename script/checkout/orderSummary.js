@@ -1,4 +1,4 @@
-import{cart, removeFromCart,caluclatecartQuantity,updateDeliveryOption} from '../../data/cart.js';
+import{cart, removeFromCart,caluclatecartQuantity,updateDeliveryOption,savetoCart} from '../../data/cart.js';
 import { getProduct } from '../../data/products.js';
 import { formatcurrency } from '../utils/money.js';
 import dayjs from'https://unpkg.com/dayjs@1.11.10/esm/index.js';
@@ -46,12 +46,11 @@ cart.forEach((cartItem) => {
        <span>
          Quantity: <span class="quantity-label js-quantity-label-${productId}">${cartItem.quantity}</span>
        </span>
-       <span class="update-quantity-link link-primary js-update-link" data-product-id="${matchingProduct.id}}">
+       <span class="update-quantity-link link-primary js-update-link js-update-link-${productId}" data-product-id="${productId}">
          Update
        </span>
-       <input class="quantity-input js-quantity-input-${matchingProduct.id}" type="number" value="1">
-       <span class="save-quantity-link link-primary js-save-link"
-              data-product-id="${matchingProduct.id}">
+       <input class="quantity-input js-quantity-input-${productId} none" type="number" value="1">
+       <span class="save-quantity-link link-primary js-save-link js-save-link-${productId} none" data-product-id="${productId}">
               Save
             </span>
        <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${matchingProduct.id}">
@@ -133,4 +132,26 @@ document.querySelectorAll('.js-delivery-option')
       renderPaymentSummary();
     });
   });
+
+document.querySelectorAll('.js-update-link').forEach((link)=>{
+  link.addEventListener('click',()=>{
+    let productId = link.dataset.productId;
+    link.classList.add("none");
+    document.querySelector(`.js-quantity-input-${productId}`).classList.remove("none");
+    document.querySelector(`.js-save-link-${productId}`).classList.remove("none");
+  });
+});
+
+document.querySelectorAll('.js-save-link').forEach((link)=>{
+  link.addEventListener('click',()=>{
+    let productId = link.dataset.productId;
+    link.classList.add("none");
+    document.querySelector(`.js-quantity-input-${productId}`).classList.add("none");
+    document.querySelector(`.js-update-link-${productId}`).classList.remove("none");
+    savetoCart(productId);
+    checkoutUpdate();
+    renderorderSummary();
+    renderPaymentSummary();
+  });
+});
 }
