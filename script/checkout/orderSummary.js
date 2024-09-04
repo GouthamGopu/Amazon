@@ -49,7 +49,7 @@ cart.forEach((cartItem) => {
        <span class="update-quantity-link link-primary js-update-link js-update-link-${productId}" data-product-id="${productId}">
          Update
        </span>
-       <input class="quantity-input js-quantity-input-${productId} none" type="number" value="1">
+       <input class="quantity-input js-quantity-input-${productId} none" type="number" value="1" min="1">
        <span class="save-quantity-link link-primary js-save-link js-save-link-${productId} none" data-product-id="${productId}">
               Save
             </span>
