@@ -1,8 +1,9 @@
-import { cart} from '../../data/cart.js';
+import { cart,clearCart } from '../../data/cart.js';
 import { getProduct } from '../../data/products.js';
 import { getdeliveryOption } from '../../data/deliveryOption.js';
 import { formatcurrency } from '../utils/money.js';
 import { caluclatecartQuantity } from '../../data/cart.js';
+import { placeOrder } from '../../../data/orders.js';
 
 export function renderPaymentSummary() {
   let productPriceCents = 0;
@@ -61,5 +62,21 @@ export function renderPaymentSummary() {
   // Render the payment summary HTML in the DOM
   document.querySelector('.js-payment-summary')
     .innerHTML = paymentSummaryHTML;
+
+  let orderBtn = document.querySelector(".js-place-order-btn");
+
+  orderBtn.addEventListener('click', () => {
+    if (cart.length > 0) {
+      placeOrder(cart); // Move all cart items to orders
+      clearCart();      // Clear the cart after placing the order
+      alert('Order placed successfully!');
+      window.location = "/orders.html";
+    } else {
+      alert('Cart is empty.');
+    }
+    renderorderSummary();
+    renderPaymentSummary();
+  });
+
 
 }

@@ -109,7 +109,7 @@ function deliveryOptionsHTML(matchingProduct,cartItem){
 const emptyCartMessage = `
 <div class="no-order-div">
   <p>Your cart is empty</p>
-  <a href="amazon.html">
+  <a href="index.html">
     <button class="order-now-button button-primary">
       Order Now
     </button>

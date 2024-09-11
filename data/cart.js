@@ -20,7 +20,7 @@ function savetoStorage(){
   localStorage.setItem('cart',JSON.stringify(cart));
 }
 
-export function addtoCart(productId){
+export function addtoCart(productId,quantity){
   let matchingitem;
   cart.forEach((cartItem)=>{
     if(productId === cartItem.productId){
@@ -28,7 +28,7 @@ export function addtoCart(productId){
     }
   });
 
-  let quantity=Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
+  
 
   if (matchingitem){
     matchingitem.quantity +=quantity;
