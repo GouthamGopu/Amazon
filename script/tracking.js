@@ -1,5 +1,5 @@
-import { getOrder } from "../../data/orders.js";
-import { getProduct } from "../../data/products.js";
+import { getOrder } from "../data/orders.js";
+import { getProduct } from "../data/products.js";
 
 // Function to get query parameters from the URL
 function getQueryParams() {
