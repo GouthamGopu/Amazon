@@ -63,20 +63,20 @@ export function renderPaymentSummary() {
   document.querySelector('.js-payment-summary')
     .innerHTML = paymentSummaryHTML;
 
-  let orderBtn = document.querySelector(".js-place-order-btn");
+ let orderBtn = document.querySelector(".js-place-order-btn");
 
-orderBtn.addEventListener('click', () => {
-  if (cart.length > 0) {
-    placeOrder(cart); // Move all cart items to orders
-    clearCart();      // Clear the cart after placing the order
-    alert('Order placed successfully!');
-    window.location.href = "/orders.html"; // Navigate to orders.html
-  } else {
-    alert('Cart is empty.');
-  }
-  renderOrderSummary();
-  renderPaymentSummary();
-});
+  orderBtn.addEventListener('click', () => {
+    if (cart.length > 0) {
+      placeOrder(cart); // Move all cart items to orders
+      clearCart();      // Clear the cart after placing the order
+      alert('Order placed successfully!');
+      window.location = "/Amazon/orders.html";
+    } else {
+      alert('Cart is empty.');
+    }
+    renderorderSummary();
+    renderPaymentSummary();
+  });
 
 
 }
