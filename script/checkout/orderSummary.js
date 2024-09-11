@@ -106,7 +106,19 @@ function deliveryOptionsHTML(matchingProduct,cartItem){
   });
   return html;
 }
-document.querySelector('.js-order-summary').innerHTML= cartSummary||'<p>your cart is empty</p>';
+const emptyCartMessage = `
+<div class="no-order-div">
+  <p>Your cart is empty</p>
+  <a href="amazon.html">
+    <button class="order-now-button button-primary">
+      Order Now
+    </button>
+  </a>
+</div>
+`;
+
+// Set the innerHTML based on whether cartSummary is available or not
+document.querySelector('.js-order-summary').innerHTML= cartSummary || emptyCartMessage;
 
 document.querySelectorAll('.js-delete-link').forEach((link)=>{
   link.addEventListener('click',()=>{

@@ -79,3 +79,27 @@
   border-radius: 50px;
   width: 50%;
 }
+
+/* Progress Bar Container */
+.progress-bar-container {
+  width: 100%;
+  height: 20px;
+  background-color: #e0e0e0; /* Light gray background for progress bar */
+  border-radius: 10px;
+  overflow: hidden; /* Ensure inner bar doesn't overflow */
+  margin-top: 20px;
+}
+
+/* Actual Progress Bar */
+.progress-bar {
+  height: 100%;
+  width: 0%; /* Default width to 0 */
+  background-color: #4caf50; /* Green color for the progress bar */
+  transition: width 0.5s ease-in-out; /* Smooth transition */
+}
+
+/* Status Label */
+.current-status {
+  font-weight: bold;
+  color: #4caf50; /* Green color for the active/current status */
+}

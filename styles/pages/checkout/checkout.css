@@ -215,3 +215,14 @@
 .quantity-input{
   width: 30px;
 }
+
+.order-now-button{
+  padding: 10px;
+  width: 100px;
+}
+.no-order-div{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+}

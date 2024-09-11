@@ -69,38 +69,43 @@ export function displayOrders() {
 let cartquantity=caluclatecartQuantity();
 document.querySelector('.js-cart-quantity').innerHTML=cartquantity;
 
-function displayProducts(order){
-  let html="";
-  order.items.forEach((item)=>{
+function displayProducts(order) {
+  let html = "";
+  order.items.forEach((item) => {
     const matchingProduct = getProduct(item.productId);
-      html+=`<div class="product-image-container">
-              <img src="${matchingProduct.image}">
-            </div>
-            <div class="product-details">
-              <div class="product-name">
-                ${matchingProduct.name}
-              </div>
-              <div class="product-delivery-date">
-                Arriving on: ${item.deliveryDate}
-              </div>
-              <div class="product-quantity">
-                Quantity: ${item.quantity}
-              </div>
-              
-              <button class="buy-again-button button-primary">
-                <img class="buy-again-icon" src="images/icons/buy-again.png">
-                <span class="buy-again-message">Buy it again</span>
-              </button>
-              
-            </div>
+    
+    // Create a tracking URL for each product
+    const trackingURL = `tracking.html?orderId=${order.orderId}&productId=${item.productId}`;
+    
+    html += `
+      <div class="product-image-container">
+        <img src="${matchingProduct.image}">
+      </div>
+      <div class="product-details">
+        <div class="product-name">
+          ${matchingProduct.name}
+        </div>
+        <div class="product-delivery-date">
+          Arriving on: ${item.deliveryDate}
+        </div>
+        <div class="product-quantity">
+          Quantity: ${item.quantity}
+        </div>
+        
+        <button class="buy-again-button button-primary">
+          <img class="buy-again-icon" src="images/icons/buy-again.png">
+          <span class="buy-again-message">Buy it again</span>
+        </button>
+        
+      </div>
 
-            <div class="product-actions">
-              <a href="tracking.html">
-                <button class="track-package-button button-secondary">
-                  Track package
-                </button>
-              </a>
-            </div>`;
+      <div class="product-actions">
+        <a href="${trackingURL}">
+          <button class="track-package-button button-secondary">
+            Track package
+          </button>
+        </a>
+      </div>`;
   });
   return html;
 }
