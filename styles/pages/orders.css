@@ -203,6 +203,7 @@
   .buy-again-button {
     width: 100%;
     margin-bottom: 15px;
+    text-decoration: none;
   }
 
   .product-actions {
@@ -217,4 +218,19 @@
     width: 100%;
     padding: 12px;
   }
+}
+
+
+.order-now-button{
+  padding: 10px;
+  width: 100px;
+}
+.no-order{
+  font-size: large;
+}
+.no-order-div{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
 }

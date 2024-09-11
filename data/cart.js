@@ -78,3 +78,8 @@ export function savetoCart(productId){
   });
   savetoStorage();
 }
+
+export function clearCart() {
+  cart.length = 0; // This will empty the cart array
+  savetoStorage();
+}
