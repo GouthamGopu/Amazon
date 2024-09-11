@@ -3,7 +3,7 @@ import { getProduct } from '../../data/products.js';
 import { getdeliveryOption } from '../../data/deliveryOption.js';
 import { formatcurrency } from '../utils/money.js';
 import { caluclatecartQuantity } from '../../data/cart.js';
-import { placeOrder } from '../../../data/orders.js';
+import { placeOrder } from '../../data/orders.js';
 
 export function renderPaymentSummary() {
   let productPriceCents = 0;
