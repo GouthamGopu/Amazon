@@ -70,7 +70,7 @@ export function renderPaymentSummary() {
       placeOrder(cart); // Move all cart items to orders
       clearCart();      // Clear the cart after placing the order
       alert('Order placed successfully!');
-      window.location.href = "/orders.html";
+      window.location.href = "/Amazon/orders.html";
     } else {
       alert('Cart is empty.');
     }
