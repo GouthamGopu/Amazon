@@ -1,9 +1,9 @@
 // orders.js
-import { orders } from "../../data/orders.js";
-import { caluclatecartQuantity } from "../../data/cart.js";
-import { getProduct } from "../../data/products.js";
+import { orders } from "../data/orders.js";
+import { caluclatecartQuantity } from "../data/cart.js";
+import { getProduct } from "../data/products.js";
 import formatcurrency from "./utils/money.js";
-import { addtoCart  } from "../../data/cart.js";
+import { addtoCart  } from "../data/cart.js";
 
 let items = []
 
